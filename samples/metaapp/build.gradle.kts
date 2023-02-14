@@ -105,12 +105,12 @@ dependencies {
     implementation(Libs.vectorDrawable)
     implementation(Libs.androidxLifLivedata)
     implementation(Libs.androidxLifViewModel)
-    implementation("androidx.fragment:fragment-ktx:1.3.5")
-    implementation("androidx.core:core-ktx:1.5.0") // ext drawable
-    implementation("io.github.g00fy2:versioncompare:1.4.1")
+    implementation("androidx.fragment:fragment-ktx:1.5.5")
+    implementation("androidx.core:core-ktx:1.9.0") // ext drawable
+    implementation("io.github.g00fy2:versioncompare:1.5.0")
 
     // TV
-    implementation("androidx.appcompat:appcompat:1.0.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.leanback:leanback:1.0.0")
 
     // Koin

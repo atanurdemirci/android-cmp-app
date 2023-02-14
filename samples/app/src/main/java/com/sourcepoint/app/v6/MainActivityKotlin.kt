@@ -51,14 +51,14 @@ class MainActivityKotlin : AppCompatActivity() {
         activity = this@MainActivityKotlin
         spClient = LocalClient()
         spConfig = dataProvider.spConfig
-//        config {
-//            accountId = 22
-//            propertyName = "sca-ott-newwebpm"
-//            messLanguage = MessageLanguage.ENGLISH
-//            propertyId = 27927
-//            +(CampaignType.GDPR)
-//            +(CampaignType.CCPA to listOf(("location" to "US")))
-//        }
+        config {
+            accountId = 22
+            propertyName = "appletv.demo"
+            messLanguage = MessageLanguage.ENGLISH
+            propertyId = 17935
+            +(CampaignType.GDPR)
+            +(CampaignType.CCPA)
+        }
     }
 
 

@@ -18,20 +18,18 @@ import kotlinx.android.synthetic.main.only_gdpr.*
 import org.json.JSONObject
 
 class OnlyGdprOttKotlin : AppCompatActivity() {
-
     private val spConsentLib by spConsentLibLazy {
         activity = this@OnlyGdprOttKotlin
         spClient = LocalClient()
         config {
             accountId = 22
-            propertyId = 22231
-            propertyName = "ott.test.suite"
+            propertyName = "appletv.demo"
             messLanguage = MessageLanguage.ENGLISH
-            messageTimeout = 3000
+            propertyId = 17935
             +(CampaignType.GDPR)
+            +(CampaignType.CCPA)
         }
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,30 +39,18 @@ class OnlyGdprOttKotlin : AppCompatActivity() {
 
         review_consents_gdpr.setOnClickListener {
             spConsentLib.loadPrivacyManager(
-                "488393",
-                PMTab.PURPOSES,
+                "713324",
+                PMTab.DEFAULT,
                 CampaignType.GDPR,
             )
         }
 
         clear_all.setOnClickListener { clearAllData(this) }
-
-    }
-
-    private val pubData: JSONObject = JSONObject().apply {
-        put("timeStamp", 1628620031363)
-        put("key_1", "value_1")
-        put("key_2", true)
-        put("key_3", JSONObject())
     }
 
     override fun onResume() {
         super.onResume()
         spConsentLib.loadMessage()
-        /**
-         * To send the `pubData` JSONObject you can use the following variant of loadMessage
-         */
-        // spConsentLib.loadMessage(pubData = pubData)
     }
 
     override fun onDestroy() {
@@ -74,7 +60,6 @@ class OnlyGdprOttKotlin : AppCompatActivity() {
     }
 
     internal inner class LocalClient : SpClient {
-
         override fun onNoIntentActivitiesFound(url: String) {
             Log.i(this::class.java.name, "onNoIntentActivitiesFound")
         }
@@ -89,9 +74,7 @@ class OnlyGdprOttKotlin : AppCompatActivity() {
             return consentAction
         }
 
-        override fun onNativeMessageReady(message: MessageStructure, messageController: NativeMessageController) {
-
-        }
+        override fun onNativeMessageReady(message: MessageStructure, messageController: NativeMessageController) {}
 
         override fun onUIFinished(view: View) {
             spConsentLib.removeView(view)

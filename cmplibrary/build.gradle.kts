@@ -18,13 +18,11 @@ group = "com.sourcepoint.cmplibrary"
 version = versionLib
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(33)
     testOptions.unitTests.isIncludeAndroidResources = true
     defaultConfig {
         minSdkVersion(21)
-        targetSdkVersion(28)
-        versionCode = 300
-        versionName = versionLib
+        targetSdkVersion(33)
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -65,6 +63,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
         isCoreLibraryDesugaringEnabled = true
     }
+    namespace = "com.example.cmplibrary"
+    testNamespace = "com.sourcepoint.cmplibrary"
+    lint {
+        abortOnError = false
+    }
     tasks {
         withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
             kotlinOptions.jvmTarget = "1.8"
@@ -77,18 +80,13 @@ android {
         unitTests.isReturnDefaultValues = true
         unitTests.isIncludeAndroidResources = true
     }
-
-    lintOptions {
-        // https://stackoverflow.com/questions/44751469/kotlin-extension-functions-suddenly-require-api-level-24/44752239
-        isAbortOnError = false
-    }
 }
 
 dependencies {
     // kotlin
     implementation(Libs.kotlinxCoroutinesCore)
     // https://mvnrepository.com/artifact/com.android.tools/desugar_jdk_libs
-    coreLibraryDesugaring( "com.android.tools:desugar_jdk_libs:1.1.5")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.2")
 
 
     // Unfortunately we depend on a outdated version of okhttp due to its support to older versions of Android

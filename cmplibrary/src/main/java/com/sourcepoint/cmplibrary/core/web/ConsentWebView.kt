@@ -89,7 +89,7 @@ internal class ConsentWebView(
 
     private fun setStyle() {
         settings.javaScriptEnabled = true
-        setBackgroundColor(Color.TRANSPARENT)
+        setBackgroundColor(Color.WHITE)
         this.requestFocus()
     }
 

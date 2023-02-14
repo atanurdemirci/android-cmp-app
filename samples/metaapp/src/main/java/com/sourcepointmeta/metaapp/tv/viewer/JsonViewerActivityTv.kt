@@ -14,9 +14,11 @@ class JsonViewerActivityTv : FragmentActivity() {
         val logId = intent.getLongExtra(LOG_ID, -1L)
         val title = intent.getStringExtra(TITLE)
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, JsonViewerFragmentTv.instance(logId, title))
-                .commitNow()
+            title?.let { JsonViewerFragmentTv.instance(logId, it) }?.let {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, it)
+                    .commitNow()
+            }
         }
     }
 }
