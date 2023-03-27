@@ -223,7 +223,7 @@ private class DataStorageCcpaImpl(context: Context) : DataStorageCcpa {
         set(value) {
             preference
                 .edit()
-                .putString(CCPA_MESSAGE_METADATA, value)
+                .putString(CCPA_MESSAGE_METADATA, value) // test
                 .apply()
         }
 
