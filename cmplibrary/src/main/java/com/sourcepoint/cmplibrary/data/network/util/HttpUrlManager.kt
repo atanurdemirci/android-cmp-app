@@ -319,9 +319,9 @@ enum class Env(
         "localProd"
     ),
     PROD(
-        "cdn.privacy-mgmt.com",
-        "cdn.privacy-mgmt.com",
-        "cdn.privacy-mgmt.com",
+        "preprod-cdn.privacy-mgmt.com",
+        "preprod-cdn.privacy-mgmt.com",
+        "preprod-cdn.privacy-mgmt.com",
         "prod"
     )
 }

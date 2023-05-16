@@ -51,14 +51,14 @@ class MainActivityKotlin : AppCompatActivity() {
         activity = this@MainActivityKotlin
         spClient = LocalClient()
         spConfig = dataProvider.spConfig
-//        config {
-//            accountId = 22
-//            propertyName = "sca-ott-newwebpm"
-//            messLanguage = MessageLanguage.ENGLISH
-//            propertyId = 27927
-//            +(CampaignType.GDPR)
-//            +(CampaignType.CCPA to listOf(("location" to "US")))
-//        }
+        config {
+            accountId = 1789
+            propertyName = "badoo.android"
+            messLanguage = MessageLanguage.ENGLISH
+            propertyId = 27195
+            +(CampaignType.GDPR)
+            +(CampaignType.CCPA)
+        }
     }
 
 
@@ -77,14 +77,14 @@ class MainActivityKotlin : AppCompatActivity() {
         setContentView(R.layout.activity_main_v7)
         review_consents_gdpr.setOnClickListener { _v: View? ->
             spConsentLib.loadPrivacyManager(
-                dataProvider.gdprPmId,
+                "759246",
                 PMTab.PURPOSES,
                 CampaignType.GDPR
             )
         }
         review_consents_ccpa.setOnClickListener { _v: View? ->
             spConsentLib.loadPrivacyManager(
-                dataProvider.ccpaPmId,
+                "759254",
                 PMTab.PURPOSES,
                 CampaignType.CCPA
             )
