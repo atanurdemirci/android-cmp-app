@@ -194,6 +194,8 @@ val defaultProperty10 = Property(
     propertyId = 26891,
 )
 
+
+// reconsent
 val defaultProperty11 = Property(
     propertyName = "sdk.reconsent.test",
     accountId = 22,
