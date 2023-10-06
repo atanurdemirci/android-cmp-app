@@ -2,7 +2,7 @@ name: SDK Release
 
 on:
   push:
-    branches:  [ master ] #[ release/* ]
+    branches:  [ master, master_fix ] #[ release/* ]
 #    paths:
 #      - '!*.yml'
 #      - '!README.md'
