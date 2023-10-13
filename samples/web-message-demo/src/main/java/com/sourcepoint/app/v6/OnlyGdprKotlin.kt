@@ -46,6 +46,8 @@ class OnlyGdprKotlin : AppCompatActivity() {
 
         clear_all.setOnClickListener { clearAllData(this) }
 
+        reload.setOnClickListener { spConsentLib.loadMessage() }
+
         custom_consent.setOnClickListener {
             spConsentLib.customConsentGDPR(
                 vendors = listOf("5ff4d000a228633ac048be41"),
