@@ -1,7 +1,7 @@
 name: RELEASE
 on:
   push:
-    branches: [ master ]
+    branches: [ origin/release/7.4.3 ]
 #    paths:
 #      - '!*.yml'
 #      - '!README.md'
