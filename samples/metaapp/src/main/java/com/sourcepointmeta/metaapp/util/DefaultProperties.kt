@@ -492,4 +492,4 @@ val v7Consent742 = """
       "sp.key.messages.v7.nonKeyedLocalState": "{\n  \"ccpa\": {\n    \"_sp_v1_data\": \"585620\",\n    \"_sp_v1_p\": \"973\"\n  },\n  \"gdpr\": {\n    \"_sp_v1_data\": \"633830\",\n    \"_sp_v1_p\": \"372\"\n  }\n}"
     }
     
-""".trimIndent()
+""".trimIndent() // test
