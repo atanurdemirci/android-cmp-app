@@ -148,8 +148,6 @@ private class ServiceImpl(
                 newPropertyId = spConfig.propertyId,
             )
 
-            campaignManager.deleteExpiredConsents()
-
             val metadataResponse = this.getMetaData(messageReq.toMetaDataParamReq(campaigns4Config))
                 .executeOnLeft { metaDataError ->
                     onFailure(metaDataError, true)
@@ -222,8 +220,6 @@ private class ServiceImpl(
                         return@executeOnWorkerThread
                     }
                     .executeOnRight {
-                        it.campaigns?.gdpr?.expirationDate?.let { exDate -> dataStorage.gdprExpirationDate = exDate }
-                        it.campaigns?.ccpa?.expirationDate?.let { exDate -> dataStorage.ccpaExpirationDate = exDate }
                         campaignManager.also { _ ->
                             messagesOptimizedLocalState = it.localState
                             nonKeyedLocalState = it.nonKeyedLocalState
@@ -534,13 +530,10 @@ private class ServiceImpl(
                         gdprConsentStatus = csd.gdpr?.copy(applies = gdprApplies)
                         gdprUuid = csd.gdpr?.uuid
                         gdprDateCreated = csd.gdpr?.dateCreated
-                        csd.gdpr?.expirationDate?.let { exDate -> dataStorage.gdprExpirationDate = exDate }
-
                         // CCPA
                         ccpaConsentStatus = csd.ccpa?.copy(applies = ccpaApplies)
                         ccpaUuid = csd.ccpa?.uuid
                         ccpaDateCreated = csd.ccpa?.dateCreated
-                        csd.ccpa?.expirationDate?.let { exDate -> dataStorage.ccpaExpirationDate = exDate }
                     }
                 }
             }

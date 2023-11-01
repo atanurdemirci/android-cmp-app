@@ -3,10 +3,8 @@ package com.sourcepoint.cmplibrary.data.local
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
-import com.sourcepoint.cmplibrary.data.local.DataStorage.Companion.CCPA_CONSENT_STATUS
 import com.sourcepoint.cmplibrary.data.local.DataStorageCcpa.Companion.CCPA_CONSENT_RESP
 import com.sourcepoint.cmplibrary.data.local.DataStorageCcpa.Companion.CCPA_DATE_CREATED
-import com.sourcepoint.cmplibrary.data.local.DataStorageCcpa.Companion.CCPA_EXPIRATION_DATE_MESSAGE
 import com.sourcepoint.cmplibrary.data.local.DataStorageCcpa.Companion.CCPA_JSON_MESSAGE
 import com.sourcepoint.cmplibrary.data.local.DataStorageCcpa.Companion.CCPA_MESSAGE_METADATA
 import com.sourcepoint.cmplibrary.data.local.DataStorageCcpa.Companion.CCPA_POST_CHOICE_RESP
@@ -41,8 +39,6 @@ internal interface DataStorageCcpa {
     var ccpaSamplingValue: Double
     var ccpaSamplingResult: Boolean?
 
-    var ccpaExpirationDate: String?
-
     var gppData: Map<String, Any?>?
 
     fun saveCcpa(value: String)
@@ -55,7 +51,7 @@ internal interface DataStorageCcpa {
     fun getCcpaMessage(): String
     fun clearCcpaConsent()
     fun clearGppData()
-    fun deleteCcpaConsent()
+    fun clearAll()
 
     companion object {
         const val KEY_CCPA = "sp.ccpa.key"
@@ -74,7 +70,6 @@ internal interface DataStorageCcpa {
         const val CCPA_DATE_CREATED = "sp.ccpa.key.date.created"
         const val CCPA_SAMPLING_VALUE = "sp.ccpa.key.sampling"
         const val CCPA_SAMPLING_RESULT = "sp.ccpa.key.sampling.result"
-        const val CCPA_EXPIRATION_DATE_MESSAGE = "sp.ccpa.key.expiration.date"
     }
 }
 
@@ -171,17 +166,6 @@ private class DataStorageCcpaImpl(context: Context) : DataStorageCcpa {
                 preference
                     .edit()
                     .remove(CCPA_SAMPLING_RESULT)
-                    .apply()
-            }
-        }
-
-    override var ccpaExpirationDate: String?
-        get() = preference.getString(CCPA_EXPIRATION_DATE_MESSAGE, null)
-        set(value) {
-            value?.let {
-                preference
-                    .edit()
-                    .putString(CCPA_EXPIRATION_DATE_MESSAGE, it)
                     .apply()
             }
         }
@@ -283,7 +267,7 @@ private class DataStorageCcpaImpl(context: Context) : DataStorageCcpa {
                 .apply()
         }
 
-    override fun deleteCcpaConsent() {
+    override fun clearAll() {
         clearGppData()
         preference
             .edit()
@@ -302,8 +286,6 @@ private class DataStorageCcpaImpl(context: Context) : DataStorageCcpa {
             .remove(CCPA_DATE_CREATED)
             .remove(CCPA_SAMPLING_VALUE)
             .remove(CCPA_SAMPLING_RESULT)
-            .remove(CCPA_CONSENT_STATUS)
-            .remove(CCPA_EXPIRATION_DATE_MESSAGE)
             .apply()
     }
 }

@@ -198,8 +198,8 @@ private class DataStorageImpl(
     }
 
     override fun clearAll() {
-        dsCcpa.deleteCcpaConsent()
-        dsGdpr.deleteGdprConsent()
+        dsCcpa.clearAll()
+        dsGdpr.clearAll()
         preference
             .edit()
             .remove(LOCAL_STATE)

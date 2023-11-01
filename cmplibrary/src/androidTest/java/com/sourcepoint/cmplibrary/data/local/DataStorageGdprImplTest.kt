@@ -13,7 +13,7 @@ class DataStorageGdprImplTest {
     fun clear_data_DataStorage() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val storage = DataStorageGdpr.create(appContext).apply { deleteGdprConsent() }
+        val storage = DataStorageGdpr.create(appContext).apply { clearAll() }
 
         storage.saveAuthId("auth")
         storage.saveGdpr("{\"type\":\"GDPR\"}")

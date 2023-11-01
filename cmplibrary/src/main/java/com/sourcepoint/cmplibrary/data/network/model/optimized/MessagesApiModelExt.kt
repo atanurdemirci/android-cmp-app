@@ -146,7 +146,6 @@ internal fun CCPA.toCcpaCS(applies: Boolean?) = CcpaCS(
     gppData = gppData,
     uuid = null,
     webConsentPayload = webConsentPayload,
-    expirationDate = expirationDate
 )
 
 internal fun GDPR.toGdprCS(applies: Boolean?) = GdprCS(
@@ -172,5 +171,4 @@ internal fun GDPR.toGdprCS(applies: Boolean?) = GdprCS(
     uuid = null,
     vendorListId = null,
     webConsentPayload = webConsentPayload,
-    expirationDate = expirationDate
 )

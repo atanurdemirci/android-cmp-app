@@ -62,8 +62,7 @@ data class CcpaCS(
     @Serializable(with = CcpaStatusSerializer::class) val status: CcpaStatus?,
     @SerialName("GPPData") @Serializable(with = JsonMapSerializer::class) val gppData: Map<String, JsonElement>? = null,
     @SerialName("uuid") var uuid: String?,
-    @SerialName("webConsentPayload") val webConsentPayload: JsonObject? = null,
-    @SerialName("expirationDate") var expirationDate: String?,
+    @SerialName("webConsentPayload") val webConsentPayload: JsonObject? = null
 )
 
 @Serializable
@@ -90,7 +89,6 @@ data class GdprCS(
     @SerialName("uuid") var uuid: String?,
     @SerialName("vendorListId") val vendorListId: String?,
     @SerialName("webConsentPayload") val webConsentPayload: JsonObject? = null,
-    @SerialName("expirationDate") var expirationDate: String?,
 ) {
 
     @Serializable

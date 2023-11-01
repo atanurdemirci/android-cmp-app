@@ -48,6 +48,4 @@ internal interface DataStorage : DataStorageGdpr, DataStorageCcpa {
     fun saveLocalState(value: String)
     fun getLocalState(): String?
     fun updateLocalDataVersion()
-
-    fun clearAll()
 }

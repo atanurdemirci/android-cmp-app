@@ -199,7 +199,6 @@ class CampaignManagerTest {
             status = CcpaStatus.rejectedSome,
             uuid = "fake_uuid",
             webConsentPayload = JsonObject(mapOf()),
-            expirationDate = null
         )
 
         // WHEN
